@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Iris Dataset</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- Include jQuery for AJAX -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <div id="background-image"></div>
+
+  <div id="text-box">
+    <h1>Check Type</h1>
+    <div id="user-input">
+      <form id="iris-form" action="/predict" method="POST">
+        <label for="sepal_length">Enter your Sepal Length:</label>
+        <input name="sepal_length" type="text" id="sepal_length" placeholder="Sepal Length" required>
+        
+        <label for="sepal_width">Enter your Sepal Width:</label>
+        <input name="sepal_width" type="text" id="sepal_width" placeholder="Sepal Width" required>
+        
+        <label for="petal_length">Enter your Petal Length:</label>
+        <input name="petal_length" type="text" id="petal_length" placeholder="Petal Length" required>
+        
+        <label for="petal_width">Enter your Petal Width:</label>
+        <input name="petal_width" type="text" id="petal_width" placeholder="Petal Width" required>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <h3>Prediction: <span id="prediction"></span></h3>
+
+  <script>
+    $(document).ready(function () {
+      $('#iris-form').on('submit', function (event) {
+        event.preventDefault(); // Prevent form from refreshing the page
+        $.ajax({
+          type: 'POST',
+          url: '/predict',
+          data: $(this).serialize(),
+          success: function (response) {
+            $('#prediction').text(response.prediction);
+          },
+          error: function () {
+            alert('Error in prediction.');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
