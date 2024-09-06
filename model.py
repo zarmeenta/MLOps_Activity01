@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import seaborn as sns
 
 # Load and prepare the Iris dataset
