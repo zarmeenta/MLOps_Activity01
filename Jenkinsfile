@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials') // Ensure Docker Hub credentials are set in Jenkins
-        DOCKER_HUB_REPO = 'zarmeenta/MLOps_Activity01'  // Docker Hub repository
+        DOCKER_HUB_REPO = 'zarmeenta/mlops_t3'  // Docker Hub repository
     }
     stages {
         stage('Checkout Code') {
