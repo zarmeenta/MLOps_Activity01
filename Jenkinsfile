@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials') // Ensure credentials are set in Jenkins
-        DOCKER_HUB_REPO = 'zarmeenta/MLOps_Activity01'
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials') // Ensure Docker Hub credentials are set in Jenkins
+        DOCKER_HUB_REPO = 'zarmeenta/MLOps_Activity01'  // Docker Hub repository
     }
     stages {
         stage('Checkout Code') {
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    def image = docker.build("${DOCKER_HUB_REPO}:latest", "-f Dockerfile .")
+                    image = docker.build("${DOCKER_HUB_REPO}:latest", "-f Dockerfile .")
                 }
             }
         }
